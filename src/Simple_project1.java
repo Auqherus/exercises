@@ -1,40 +1,41 @@
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Simple_project1 {
 
-    public static void main(String [] args){
-        try (Scanner TryMe = new Scanner(System.in)) {
 
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter start time (HH:mm aa): ");
+        String starttime = input.nextLine();
 
-            while (true) {
-                System.out.println("Wcisnij Q, by zakonczyc, Enter, by kontynuowac...");
-                String q = TryMe.next();
+        System.out.print("Enter end time (HH:mm aa): ");
+        String endtime = input.nextLine();
 
-                if (q.equals("q") || q.equals("Q")) {
-                    break;
-                }
+//HH converts hour in 24 hours format (0-23), day calculation
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm aa");
 
-                System.out.print("Podaj a :");
-                BigInteger a = TryMe.nextBigInteger();
-                System.out.print("Podaj b :");
-                BigInteger b = TryMe.nextBigInteger();
+        Date d1 = null;
+        Date d2 = null;
 
+        try {
+            d1 = format.parse(starttime);
+            d2 = format.parse(endtime);
 
-                Counter c1 = new Counter(a, b);
-                c1.getCalculation();
-                System.out.println("A=" + c1.getA() + " " + "B=" + c1.getB());
-            }
+            //in milliseconds
+            long diff = d2.getTime() - d1.getTime();
+
+            long diffSeconds = diff / 1000 % 60;
+            long diffMinutes = diff / (60 * 1000) % 60;
+
+            System.out.print(diffMinutes + " minutes and " + diffSeconds + " seconds.");
+        } catch (Exception e) {
+            System.out.println("Invalid fromat");
         }
     }
 }
 
-class Counter {
-    private BigInteger a,b;
-    public Counter(){} // Not in use Constructor
-    public Counter(BigInteger a, BigInteger b){this.a = a;this.b = b;}
-    public BigInteger getA() {return a;} public BigInteger getB() {return b;}
-    public void getCalculation(){
-        BigInteger BigNumberA = new BigInteger(String.valueOf(a));
-        BigInteger BigNumberB = new BigInteger(String.valueOf(b));
-        if(true) {System.out.println("Wynik ="+" "+a+"+"+b+"="+BigNumberA.add(BigNumberB));}}}
