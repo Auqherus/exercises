@@ -1,23 +1,54 @@
 import java.util.*;
-import java.io.*;
+import java.math.BigInteger;
 
 class Simple_project1 {
 
 
-        public static String FirstReverse (String str) {
-            // code goes here
-            String reverse = "";
-            for (int i =str.length()-1; i>=0 ; i--) {
-                reverse = reverse+str.charAt(i);
+    public static String CharCounts(String start) {
+
+        StringBuilder sd = new StringBuilder(start);
+        String o = "";
+
+        for (int i = 0; i < sd.length(); i++) {
+            int count = 0;
+            char x = sd.charAt(0);
+
+
+            while(sd.indexOf(x+"") != -1) {
+                sd.deleteCharAt(sd.indexOf(x+""));
+               /* System.out.println(start.charAt(i) + o + i);*/
+
+                count++;
+
             }
 
-            return reverse;
+            o = o+x+count;
         }
 
-        public static void main (String[]args){
-            // keep this function call here
-            Scanner s = new Scanner(System.in);
-            System.out.print("Put a word to reverse :" +" ");
-            System.out.print("Result :"+" "+FirstReverse(s.nextLine()));
+        return o;
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner TryMe = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Put string of letters here to count(ex.'aaabfrtd') :" + " ");
+            String s = TryMe.nextLine();
+            if (s.equals("stop")) {
+                break;
+            }
+            System.out.println("Result is :" + " " + CharCounts(s));
+
         }
     }
+}
+
+
+
+
+
+
+
+
