@@ -7,25 +7,28 @@ class Simple_project1 {
     public static String CharCounts(String start) {
 
         StringBuilder sd = new StringBuilder(start);
-        String o = "";
+        String spaceString = "";
 
-        for (int i = 0; i < sd.length(); i++) {
-            int count = 0;
-            char x = sd.charAt(0);
+        for (int i = 0; i <= sd.length(); i++) {
+            int counter = 0;
+            char charNumber = sd.charAt(0);   // ustaw w metodzie StringBuilder sd charNumber na 0 indeks
 
 
-            while(sd.indexOf(x+"") != -1) {
-                sd.deleteCharAt(sd.indexOf(x+""));
-               /* System.out.println(start.charAt(i) + o + i);*/
+            while(sd.indexOf(charNumber+"") != -1) {
+                sd.deleteCharAt(sd.indexOf(charNumber+""));    // usun po zliczeniu litere spaceString podanym indeksie(czyli zerowym)
+               /* System.out.println(start.charAt(i) + spaceString + i);*/
 
-                count++;
+                counter++;
+
 
             }
+            System.out.println(spaceString+"Letter:"+charNumber+" Times: "+counter);
 
-            o = o+x+count;
+
         }
 
-        return o;
+
+        return spaceString;
     }
 
 
@@ -39,7 +42,7 @@ class Simple_project1 {
             if (s.equals("stop")) {
                 break;
             }
-            System.out.println("Result is :" + " " + CharCounts(s));
+           CharCounts(s);
 
         }
     }
