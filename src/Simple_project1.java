@@ -1,32 +1,48 @@
 import java.util.*;
-import java.math.BigInteger;
 
 class Simple_project1 {
 
 
     public static String CharCounts(String start) {
 
-        StringBuilder sd = new StringBuilder(start);
+
         String spaceString = "";
+        boolean answer = false;
+        int countWords = 0;
+        int countSpaces = 0;
+        int result = 0;
 
-        for (int i = 0; i <= sd.length(); i++) {
-            int counter = 0;
-            char charNumber = sd.charAt(0);   // ustaw w metodzie StringBuilder sd charNumber na 0 indeks
+        for (int i = 0; i < start.length(); i++) {
 
-
-            while(sd.indexOf(charNumber+"") != -1) {
-                sd.deleteCharAt(sd.indexOf(charNumber+""));    // usun po zliczeniu litere spaceString podanym indeksie(czyli zerowym)
-               /* System.out.println(start.charAt(i) + spaceString + i);*/
-
-                counter++;
-
-
+            if(Character.isLetter(start.charAt(i)) && i != start.length()-1){
+                answer = true;
             }
-            System.out.println(spaceString+"Letter:"+charNumber+" Times: "+counter);
+           else if(!Character.isLetter(start.charAt(i)) && answer){
+               countWords++;
+               answer = false;
+           }
+           else if(Character.isLetter(start.charAt(i)) && i == start.length()-1){
+               countWords++;
+            }
+            if(start.charAt(i) == ' '){
+                countSpaces++;
+            }
+
+
+
+
+
+
+
 
 
         }
 
+        System.out.println("Words :" +countWords);
+        System.out.println("Spaces :" +countSpaces);
+
+
+      /*  System.out.println(result);*/
 
         return spaceString;
     }
