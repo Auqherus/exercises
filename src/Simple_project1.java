@@ -28,19 +28,10 @@ class Simple_project1 {
                 countSpaces++;
             }
 
-
-
-
-
-
-
-
-
         }
 
         System.out.println("Words :" +countWords);
         System.out.println("Spaces :" +countSpaces);
-
 
       /*  System.out.println(result);*/
 
